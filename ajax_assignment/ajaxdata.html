@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetch();
+
+            function fetch() {
+                $.ajax({
+                    url: "json.php",
+                    dataType: "json",
+                    success: function(json) {
+
+                        $("#table2").empty();
+                        for (var i = 0; i < json.length; i++) {
+                            tr = $('<tr>');
+                            tr.append("<td>" + json[i].name + "</td>");
+                            tr.append("<td>" + json[i].email + "</td>");
+                            tr.append("<td>" + json[i].message + "</td>");
+                            tr.append("<td>" + json[i].date + "</td></tr>");
+                            $("#table2").append(tr);
+                        }
+                    }
+                });
+                setTimeout(fetch, 2000);
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Message
+            </th>
+            <th>
+                Date
+            </th>
+        </tr>
+    </table>
+    <tr><table id="table2"></table></tr>
+</body>
+
+</html>
