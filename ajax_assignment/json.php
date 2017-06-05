@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "123";
-$dbname = "sumitdb";
+$servername = "excellencetechnologies.co.in";
+$username = "excelarf";
+$password = "**T0y*6z8e0c";
+$dbname = "excelarf_sumitdb";
 
 // Create connection
 
@@ -18,7 +18,6 @@ if ($conn->connect_error)
 $sql = "SELECT * FROM userDetails ORDER BY name DESC LIMIT 5";
 $info = mysqli_query($conn, $sql);
 $results = array();
-
 while ($row = mysqli_fetch_assoc($info))
   {
   $results[] = array(

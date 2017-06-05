@@ -16,6 +16,7 @@
                         $("tr#table2").remove();
                         for (var i = 0; i < json.length; i++) {
                             tr = $('<tr id="table2">');
+                            tr.append("<td>" + json[i].id + "</td>");
                             tr.append("<td>" + json[i].name + "</td>");
                             tr.append("<td>" + json[i].email + "</td>");
                             tr.append("<td>" + json[i].message + "</td>");
@@ -33,7 +34,10 @@
 
 <body>
     <table border="1px">
-        <tr >
+        <tr>
+            <th>
+                ID
+            </th>
             <th>
                 Name
             </th>
@@ -46,7 +50,7 @@
             <th>
                 Date
             </th>
-        </tr>        
+        </tr>
     </table>
 </body>
 
