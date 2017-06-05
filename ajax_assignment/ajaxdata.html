@@ -13,14 +13,14 @@
                     dataType: "json",
                     success: function(json) {
 
-                        $("#table2").empty();
+                        $("tr#table2").remove();
                         for (var i = 0; i < json.length; i++) {
-                            tr = $('<tr>');
+                            tr = $('<tr id="table2">');
                             tr.append("<td>" + json[i].name + "</td>");
                             tr.append("<td>" + json[i].email + "</td>");
                             tr.append("<td>" + json[i].message + "</td>");
                             tr.append("<td>" + json[i].date + "</td></tr>");
-                            $("#table2").append(tr);
+                            $("table").append(tr);
                         }
                     }
                 });
@@ -32,8 +32,8 @@
 </head>
 
 <body>
-    <table>
-        <tr>
+    <table border="1px">
+        <tr >
             <th>
                 Name
             </th>
@@ -46,9 +46,8 @@
             <th>
                 Date
             </th>
-        </tr>
+        </tr>        
     </table>
-    <tr><table id="table2"></table></tr>
 </body>
 
 </html>
