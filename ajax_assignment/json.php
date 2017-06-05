@@ -15,12 +15,13 @@ if ($conn->connect_error)
   die("Connection failed: " . $conn->connect_error);
   }
 
-$sql = "SELECT * FROM userDetails ORDER BY name DESC LIMIT 5";
+$sql = "SELECT * FROM userDetails ORDER BY id DESC LIMIT 5";
 $info = mysqli_query($conn, $sql);
 $results = array();
 while ($row = mysqli_fetch_assoc($info))
   {
   $results[] = array(
+    'id' => $row['id'],
     'name' => $row['name'],
     'email' => $row['email'],
     'message' => $row['message'],
