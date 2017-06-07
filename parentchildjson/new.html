@@ -8,102 +8,296 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-                    var json = {
-                        "data": [{
-                            "id": "property",
-                            "name": "property"
-                        }, {
-                            "id": "Edit property",
-                            "name": "Edit property"
-                        }, {
-                            "id": "Remove property",
-                            "name": "Remove property"
-                        }, {
-                            "id": "Add property",
-                            "name": "Add property"
-                        }, {
-                            "id": "Testimonial",
-                            "name": "Testimonial"
-                        }, {
-                            "id": "Add",
-                            "name": "Add"
-                        }, {
-                            "id": "Remove",
-                            "name": "Remove"
-                        }, {
-                            "id": "View",
-                            "name": "View"
-                        }, {
-                            "id": "Edit",
-                            "name": "Edit"
-                        }, {
-                            "id": "User",
-                            "name": "User"
-                        }, {
-                            "id": "Edit User",
-                            "name": "Edit User"
-                        }, {
-                            "id": "View User List",
-                            "name": "View User List"
-                        }, {
-                            "id": "Add User",
-                            "name": "Add User"
-                        }, {
-                            "id": "Membership",
-                            "name": "Membership"
-                        }, {
-                            "id": "Edit membership",
-                            "name": "Edit membership"
-                        }, {
-                            "id": "Remove Membership",
-                            "name": "Remove Membership"
-                        }, {
-                            "id": "Add membership",
-                            "name": "Add membership"
-                        }]
-                    };
+            var json = {
+                "data": [{
+                    "id": "property",
+                    "name": "property"
+                }, {
+                    "id": "Edit property",
+                    "name": "Edit property"
+                }, {
+                    "id": "Remove property",
+                    "name": "Remove property"
+                }, {
+                    "id": "Add property",
+                    "name": "Add property"
+                }, {
+                    "id": "Testimonial",
+                    "name": "Testimonial"
+                }, {
+                    "id": "Add",
+                    "name": "Add"
+                }, {
+                    "id": "Remove",
+                    "name": "Remove"
+                }, {
+                    "id": "View",
+                    "name": "View"
+                }, {
+                    "id": "Edit",
+                    "name": "Edit"
+                }, {
+                    "id": "User",
+                    "name": "User"
+                }, {
+                    "id": "Edit User",
+                    "name": "Edit User"
+                }, {
+                    "id": "View User List",
+                    "name": "View User List"
+                }, {
+                    "id": "Add User",
+                    "name": "Add User"
+                }, {
+                    "id": "Membership",
+                    "name": "Membership"
+                }, {
+                    "id": "Edit membership",
+                    "name": "Edit membership"
+                }, {
+                    "id": "Remove Membership",
+                    "name": "Remove Membership"
+                }, {
+                    "id": "Add membership",
+                    "name": "Add membership"
+                }]
+            };
 
 
-                    var selectbox = function() {
-                        $("#sel").empty();
+            var selectbox = function() {
+                $("#sel").empty();
 
-                        for (var i = 0; i < json.data.length; i++) {
-                            $("#sel").append("<option class=" + json.data[i].id + ">" + json.data[i].name + "</option>");
-                        }
-                    }
-                    selectbox();
+                for (var i = 0; i < json.data.length; i++) {
+                    $("#sel").append("<option class=" + json.data[i].id + ">" + json.data[i].name + "</option>");
+                }
+            }
+            selectbox();
 
 
-                    $("button").click(function(){
-      
-            for(var i=0;i<json.data.length;i++){
-              if(json.data[i].name== $("#sel").val()){
-    
-                if(!($("."+json.data[i].name).closest("li").children("ul").length)){
-                  console.log($("#sel").val());
-              $("."+json.data[i].name).append("<li class="+$("#txt").val()+"><input type='checkbox'/>"+$("#txt").val()+"</li>");}
-            else
-              $("."+json.data[i].name).append("<ul><li class="+$("#txt").val()+"><input type='checkbox'/>"+$("#txt").val()+"</li></ul>");
-              json.data.push({
-                  "id":$("#txt").val(),
-                  "name":$("#txt").val()
-              });
-              selectbox();
-                            }
-                        }
-                        $('input[type=checkbox]').click(function() {
-                            $(this).parent().find('li input[type=checkbox]').prop('checked', $(this).is(':checked'));
-                            var chkbox = false;
+            $("button").click(function() {
 
-                            $(this).closest('ul').children('li').each(function() {
-                                if ($('input[type=checkbox]', this).is(':checked')) chkbox = true;
-                            });
-                            $(this).parents('ul').prev().prop('checked', chkbox);
+                for (var i = 0; i < json.data.length; i++) {
+                    if (json.data[i].name == $("#sel").val()) {
 
+                        if (($("." + json.data[i].name).closest("li").children("ul").length)) {
+                            console.log($("#sel").val());
+                            $("." + json.data[i].name).append("<li class=" + $("#txt").val() + "><input type='checkbox'/>" + $("#txt").val() + "</li>");
+                        } else
+                            $("." + json.data[i].name).append("<ul><li class=" + $("#txt").val() + "><input type='checkbox'/>" + $("#txt").val() + "</li></ul>");
+                        json.data.push({
+                            "id": $("#txt").val(),
+                            "name": $("#txt").val()
                         });
+                        selectbox();
+                    }
+                }
+                $('input[type=checkbox]').click(function() {
+                    $(this).parent().find('li input[type=checkbox]').prop('checked', $(this).is(':checked'));
+                    var chkbox = false;
 
+                    $(this).closest('ul').children('li').each(function() {
+                        if ($('input[type=checkbox]', this).is(':checked')) chkbox = true;
                     });
-               });     
+                    $(this).parents('ul').prev().prop('checked', chkbox);
+
+                });
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table align="center" cellspacing="2px" cellpadding="3px" border="1px">
+
+            <caption>
+                <b>Manage Permission</b>
+            </caption>
+
+            <tr>
+                <td>
+                    <select id="sel" placeholder="options">
+                        <option disabled selected value> -- select an option -- </option>
+
+                    </select>
+                    <input type="text" id="txt" placeholder="child name">
+                    <button>add child</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li class="Property">
+                        <input type="checkbox" />Property
+                        <ul>
+                            <li class="Edit property">
+                                <input type="checkbox" />Edit property</li>
+                            <li class="Remove property">
+                                <input type="checkbox" />Remove property</li>
+                            <li class="Add property">
+                                <input type="checkbox" />Add property</li>
+                        </ul>
+                    </li>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li>
+                        <input type="checkbox" />Testimonial
+                        <ul class="Testimonial">
+                            <li class="Add">
+                                <input type="checkbox" />Add</li>
+                            <li class="Remove">
+                                <input type="checkbox" />Remove</li>
+                            <li class="View">
+                                <input type="checkbox" />View</li>
+                            <li class="Edit">
+                                <input type="checkbox" />Edit</li>
+                        </ul>
+                    </li>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li class="User">
+                        <input type="checkbox" />User
+                        <ul>
+                            <li class="Edit User">
+                                <input type="checkbox" />Edit User</li>
+                            <li class="View User List">
+                                <input type="checkbox" />View User List</li>
+                            <li class="Add User">
+                                <input type="checkbox" />Add User</li>
+                        </ul>
+                    </li>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <li class="Membership">
+                        <input type="checkbox" />Membership
+                        <ul>
+                            <li class="Edit membership">
+                                <input type="checkbox" />Edit membership</li>
+                            <li class="Remove Membership">
+                                <input type="checkbox" />Remove Membership</li>
+                            <li class="Add membership">
+                                <input type="checkbox" />Add membership</li>
+                        </ul>
+                    </li>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html><!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var json = {
+                "data": [{
+                    "id": "property",
+                    "name": "property"
+                }, {
+                    "id": "Edit property",
+                    "name": "Edit property"
+                }, {
+                    "id": "Remove property",
+                    "name": "Remove property"
+                }, {
+                    "id": "Add property",
+                    "name": "Add property"
+                }, {
+                    "id": "Testimonial",
+                    "name": "Testimonial"
+                }, {
+                    "id": "Add",
+                    "name": "Add"
+                }, {
+                    "id": "Remove",
+                    "name": "Remove"
+                }, {
+                    "id": "View",
+                    "name": "View"
+                }, {
+                    "id": "Edit",
+                    "name": "Edit"
+                }, {
+                    "id": "User",
+                    "name": "User"
+                }, {
+                    "id": "Edit User",
+                    "name": "Edit User"
+                }, {
+                    "id": "View User List",
+                    "name": "View User List"
+                }, {
+                    "id": "Add User",
+                    "name": "Add User"
+                }, {
+                    "id": "Membership",
+                    "name": "Membership"
+                }, {
+                    "id": "Edit membership",
+                    "name": "Edit membership"
+                }, {
+                    "id": "Remove Membership",
+                    "name": "Remove Membership"
+                }, {
+                    "id": "Add membership",
+                    "name": "Add membership"
+                }]
+            };
+
+
+            var selectbox = function() {
+                $("#sel").empty();
+
+                for (var i = 0; i < json.data.length; i++) {
+                    $("#sel").append("<option class=" + json.data[i].id + ">" + json.data[i].name + "</option>");
+                }
+            }
+            selectbox();
+
+
+            $("button").click(function() {
+
+                for (var i = 0; i < json.data.length; i++) {
+                    if (json.data[i].name == $("#sel").val()) {
+
+                        if (($("." + json.data[i].name).closest("li").children("ul").length)) {
+                            console.log($("#sel").val());
+                            $("." + json.data[i].name).append("<li class=" + $("#txt").val() + "><input type='checkbox'/>" + $("#txt").val() + "</li>");
+                        } else
+                            $("." + json.data[i].name).append("<ul><li class=" + $("#txt").val() + "><input type='checkbox'/>" + $("#txt").val() + "</li></ul>");
+                        json.data.push({
+                            "id": $("#txt").val(),
+                            "name": $("#txt").val()
+                        });
+                        selectbox();
+                    }
+                }
+                $('input[type=checkbox]').click(function() {
+                    $(this).parent().find('li input[type=checkbox]').prop('checked', $(this).is(':checked'));
+                    var chkbox = false;
+
+                    $(this).closest('ul').children('li').each(function() {
+                        if ($('input[type=checkbox]', this).is(':checked')) chkbox = true;
+                    });
+                    $(this).parents('ul').prev().prop('checked', chkbox);
+
+                });
+
+            });
+        });
     </script>
 </head>
 
